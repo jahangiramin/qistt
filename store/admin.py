@@ -1,4 +1,4 @@
-from home.models import Term,Paymenttype, Category,Product, Priceplan, Priceplandetail
+from store.models import Category, Paymenttype, Priceplan, Priceplandetail, Product, Term
 from django.contrib import admin
 
 # Register your models here.
