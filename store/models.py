@@ -9,12 +9,6 @@ class Term(models.Model):
     def __str__(self):
         return self.name
 
-class Paymenttype(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
@@ -34,16 +28,19 @@ class Product(models.Model):
 class Priceplan(models.Model):
     name = models.CharField(max_length=255)
     product = models.ForeignKey(Product, on_delete=CASCADE)
-    term = models.ForeignKey(Term, on_delete=CASCADE)  
+    term = models.ForeignKey(Term, on_delete=CASCADE)
+    price = models.IntegerField()
+    downpayment = models.FloatField()
+    monthly_instalments = models.IntegerField()
+    monthly_instalment_amount = models.FloatField()
+    quarterly_instalments = models.IntegerField()
+    quarterly_instalment_amount = models.FloatField()
+    halfyearly_instalments = models.IntegerField()
+    halfyearly_instalment_amount = models.FloatField()
+    annual_instalments = models.IntegerField()
+    annual_instalment_amount = models.FloatField()
+    final_payment_amount = models.FloatField()
+
 
     def __str__(self):
-        return self.name  
-
-class Priceplandetail(models.Model):
-    priceplan = models.ForeignKey(Priceplan, on_delete=CASCADE)
-    description = models.CharField(max_length=255)
-    paymenttype = models.ForeignKey(Paymenttype, on_delete=CASCADE)
-    amount = models.IntegerField()
-
-    def __str__(self):
-        return self.description
+        return self.name
